@@ -1,0 +1,19 @@
+Victory: curse, estate, duchy, province
+
+Treasure: copper, silver, gold
+
+Cards: 
+2- cellar, chapel, moat
+
+Easy cards
+village, gardens, smithy, festival, laboratory, market, woodcutter
+
+Medium:
+feast, workshop, chancellor, chapel, cellar, merchant, vassal, moneylender, poacher, remodel, council room, library, mine, sentry, artisan
+
+interactions:
+moat, bueaucrat, militia, bandit/thief, council room, witch
+
+not worth:
+chancellor, adventurer
+
