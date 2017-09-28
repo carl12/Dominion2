@@ -31,6 +31,9 @@ class ActionCard(Card):
 class VictoryCard(Card):
 	is_vp = True
 
+class TreasureCard(Card):
+	is_treasure = True
+
 class Village(ActionCard):
 	cost = 3
 	draw = 1
@@ -68,6 +71,15 @@ class Gardens(VictoryCard):
 	@property
 	def cost(self):
 		print('calculate garden value')
+
+class Copper(TreasureCard):
+	money = 1
+	name="Copper"
+
+class Estate(VictoryCard):
+	points = 1
+	cost = 2
+	name="Estate"
 
 
 

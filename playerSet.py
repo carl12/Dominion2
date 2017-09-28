@@ -3,18 +3,26 @@ from card import *
 import copy
 class Set:
 
-	def __init__(self, deck=[]):
+	def __init__(self, deck=None):
 
 		self.hand=[]
-		self.deck=deck
-		self.all=copy.copy(deck)
+		if not deck:
+			self.deck = self.make_deff_deck()
+		else:
+			self.deck=deck
+		self.all=copy.copy(self.deck)
 		self.discard=[]
 		self.pending=[]
 		self.in_play=[]
-		# self.places={'hand':self.hand,'deck':self.deck,'discard':self.discard,'pending':self.pending,'all':self.all}
 		self.trash_list = []
 		self.token_points=0
 		self.shuffle_deck()
+
+	def make_deff_deck(self):
+		start = [Copper() for _ in range(7)]
+		start.extend([Estate() for _ in range(3)])
+		return start
+
 
 
 	def draw(self, num=1):
@@ -85,31 +93,9 @@ class Set:
 
 def set_test():
 
-	class FakeCard:
-		def __init__(self,name):
-			self.points = 0
-			self.name=name
-			self.game = []
-			self.owner=[]
-			self.opponents=[]
+	# start_deck = [c1,c2,c3,c4,c5,c6,c7,c8,c9]
 
-		def __repr__(self):
-			return self.name
-
-	c1 = FakeCard("card1")
-	c2 = FakeCard("card2")
-	c3 = FakeCard("card3")
-	c4 = FakeCard("card4")
-	c5 = FakeCard("card5")
-	c6 = FakeCard("card6")
-	c7 = FakeCard("card7")
-	c8 = FakeCard("card8")
-	c9 = FakeCard("card9")
-	c10 = FakeCard("card10")
-
-	start_deck = [c1,c2,c3,c4,c5,c6,c7,c8,c9]
-
-	s = Set(start_deck)
+	s = Set()
 	print(s.__dict__.keys())
 	print("Deck after shuffle: ")
 	print(s.deck)
