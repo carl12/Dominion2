@@ -1,4 +1,5 @@
 from random import shuffle
+from card import *
 import copy
 class Set:
 
@@ -74,10 +75,10 @@ class Set:
 		discard.append(card)
 
 	def calc_points(self):
-		sum1 = 0
 		sum2 = sum(card.points for card in self.all)
-		for card in self.all:
-			sum1 +=card.points
+		# sum1 = 0
+		# for card in self.all:
+		# 	sum1 +=card.points
 		return sum2
 
 
@@ -112,27 +113,27 @@ def set_test():
 	print(s.__dict__.keys())
 	print("Deck after shuffle: ")
 	print(s.deck)
-	print(s.all)
+	
 	s.end_turn()
 	print("Hand:")
 	print(s.hand)
-	print(s.all)
+	
 	s.end_turn()
 	print("Hand:")
 	print(s.hand)
-	print(s.all)
+	
 	print("----------------------")
 	s.end_turn()
 	print("Hand:")
 	print(s.hand)
-	print(s.all)
+	
 	s.end_turn()
 	print("Hand:")
 	print(s.hand)
-	print(s.all)
+	
 	s.trash('hand',0)
 	print(s.hand)
-	print(s.all)
+	
 	print(s.calc_points())
 
 

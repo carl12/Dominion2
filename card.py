@@ -1,4 +1,4 @@
-from set import Set
+# from set import Set
 
 class Card:
 	cost = 0
@@ -10,9 +10,9 @@ class Card:
 	is_action = False
 	is_vp = False
 	is_treasure= False
+	name = "generic card"
 
-	def __init__(self,name):
-		self.name=name
+	def __init__(self):
 		self.game = []
 		self.owner=[]
 		self.opponents=[]
@@ -21,7 +21,7 @@ class Card:
 		return self.name
 
 	def play(self):
-		pass
+		print('asdf')
 		#add all respective stuff to owner
 
 
@@ -36,6 +36,33 @@ class Village(ActionCard):
 	draw = 1
 	action = 2
 
+class Smithy(ActionCard):
+	cost = 4
+	draw = 3
+
+class Festival(ActionCard):
+	cost = 5
+	action = 2
+	buy = 1
+	money = 2
+
+class Laboratory(ActionCard):
+	cost = 5
+	draw = 2
+	action = 1
+
+class Market(ActionCard):
+	cost = 5
+	draw = 1
+	action = 1
+	buy = 1
+	money = 1
+
+class Woodcutter(ActionCard):
+	cost = 3
+	actino = 1
+	money = 2
+
 class Gardens(VictoryCard):
 	cost = 4
 	@property
@@ -44,20 +71,14 @@ class Gardens(VictoryCard):
 
 
 
-class Example(object):
-     def __init__(self, value):
-         self.x = value
-     @property
-     def x(self):
-         print( "I'm the x value!")
-         return self._x  # see below
-     @x.setter
-     def x(self, value):
-         if value < 0:
-             raise ValueError('x must not be negative')
-         self._x = value
+def attribute_test():
+	card = Card()
+	smithy = Smithy()
+	village = Village()
+
+	print(smithy.action)
+	print(smithy.draw)
+	print(smithy.money)
 
 
-
-
-
+# attribute_test()
