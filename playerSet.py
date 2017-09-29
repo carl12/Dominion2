@@ -46,14 +46,15 @@ class Set:
 
 
 	def play_card(self, loc):
-		card = hand.pop(loc)
-		in_play.append(card)
+		card = self.hand.pop(loc)
+		self.in_play.append(card)
 		# card.play()
 
-	def play_type(card_type):
-		for i,card in hand:
-			if typeof(card,card_type):
+	def play(self, card_to_play):
+		for i,card in enumerate(self.hand):
+			if type(card) is type(card_to_play):
 				self.play_card(i)
+				break
 
 	def end_turn(self):
 		self.discard.extend(self.hand)
@@ -123,4 +124,4 @@ def set_test():
 	print(s.calc_points())
 
 
-set_test()
+# set_test()

@@ -76,6 +76,16 @@ class Copper(TreasureCard):
 	money = 1
 	name="Copper"
 
+class Silver(TreasureCard):
+	money = 2
+	cost = 3
+	name="Silver"
+
+class Gold(TreasureCard):
+	money = 3
+	cost = 6
+	name="Gold"
+
 class Estate(VictoryCard):
 	points = 1
 	cost = 2

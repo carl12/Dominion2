@@ -1,18 +1,19 @@
 from store import Store
-
+from manager import *
 class Game:
 	
-	def __init__(self):
-		self.players = []
-		self.store = Store()
+	def __init__(self, managers):
+		self.managers = managers
+		self.store = Store(len(managers))
+		for m in managers:
+			m.set_store(self.store)
 
 
 	def play_turn(self, num=1):
 		for _ in range(num):
-			for player in players:
-				print('Starting ',player,' turn')
-				player.take_turn()
-				if store.is_game_over():
+			for manager in self.managers:
+				manager.take_turn()
+				if self.store.is_game_over():
 					return self.get_winner()
 		return False
 
@@ -21,7 +22,7 @@ class Game:
 		maxP = -1000
 		turns = 1000
 		winners = []
-		for p in players:
+		for p in managers:
 			if p.get_points() > maxP:
 				winners = [p]
 				maxP = p.get_points()
@@ -34,7 +35,9 @@ class Game:
 		return winners
 
 
-	
+g = Game([DumbMoney(),DumbMoney()])
+g.play_turn()
+
 
 
 
