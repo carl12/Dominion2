@@ -16,15 +16,12 @@ class Store:
 		self.empty_piles = 0
 
 	def take(self, str):
-		print('trying to take ',str)
 		cards_left = self.remain.get(str)
 		if cards_left and cards_left > 0:
 			self.remain[str]-= 1
 			if self.remain[str] == 0:
 				self.empty_piles += 1
-			card = globals()[str]()
-			print(globals()[str])
-			print(card)
+			card = card_dict[str]()
 			return card
 
 	def is_game_over(self):

@@ -1,6 +1,7 @@
 from playerSet import Set
 from card import *
 # from manager import *
+
 class Player:
 
 	def __init__(self, manager,store):
@@ -28,14 +29,14 @@ class Player:
 		self.turns +=1
 
 	def do_actions(self):
-		# self.manager.do_actions()
-		pass
+		self.manager.do_actions()
+		
 
 	def play_treasures(self):
 		for card in reversed(self.set.hand):
 			if card.is_treasure:
 				self.money += card.money
-				self.set.play(card)
+				self.set.play(card.name)
 
 	def buy_cards(self):
 		self.manager.buy_cards()
@@ -50,7 +51,7 @@ class Player:
 					self.money -= cost
 					self.buys -= 1
 					self.set.gain(card)
-					print('Bought',card)
+
 					return True
 
 
@@ -61,8 +62,12 @@ class Player:
 		self.actions = 0
 		self.buys = 0
 		self.money = 0
-		print(self.set.discard,"is discard")
+
+	def get_hand(self):
+		return self.set.hand
 
 	def get_points(self):
 		return self.set.calc_points()
 
+	def play(self, name):
+		return self.set.play(name)

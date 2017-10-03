@@ -46,15 +46,20 @@ class Set:
 
 
 	def play_card(self, loc):
+		
 		card = self.hand.pop(loc)
+		if type(card) is card_dict['Smithy']:
+			self.draw(3)
 		self.in_play.append(card)
+		return card
 		# card.play()
 
-	def play(self, card_to_play):
+	def play(self, name):
+		card_to_play = card_dict[name]
 		for i,card in enumerate(self.hand):
-			if type(card) is type(card_to_play):
-				self.play_card(i)
-				break
+			if type(card) is card_to_play:
+				return self.play_card(i)
+
 
 	def end_turn(self):
 		self.discard.extend(self.hand)

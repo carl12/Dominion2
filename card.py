@@ -44,6 +44,7 @@ class Village(ActionCard):
 class Smithy(ActionCard):
 	cost = 4
 	draw = 3
+	name = "Smithy"
 
 class Festival(ActionCard):
 	cost = 5
