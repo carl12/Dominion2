@@ -27,6 +27,8 @@ class Store:
 	def is_game_over(self):
 		return self.empty_piles >= 3 or self.remain['Province']== 0
 
+	def get_left(self,name):
+		return self.remain[name]
 
 
 

@@ -69,5 +69,11 @@ class Player:
 	def get_points(self):
 		return self.set.calc_points()
 
+	def get_all(self):
+		return self.set.all
+
+	def get_left(self,name):
+		return self.store.get_left(name)
+
 	def play(self, name):
 		return self.set.play(name)
