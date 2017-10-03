@@ -1,13 +1,5 @@
 from card import *
 class Store:
-	super_classes = ('Card','ActionCard','VictoryCard')
-	g = globals().copy()
-	available_cards = []
-	for key, vals in g.items():
-		if type(vals) is type and key not in super_classes:
-			available_cards.append(key)
-	# print(available_cards)
-
 
 	def __init__(self, num_players=2):
 		if num_players > 2:

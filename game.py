@@ -2,11 +2,10 @@ from store import Store
 from manager import *
 class Game:
 	
-	def __init__(self, managers):
+	def __init__(self, managers, store):
 		self.managers = managers
-		self.store = Store(len(managers))
-		for m in managers:
-			m.set_store(self.store)
+		self.store = store
+
 
 
 	def play_turn(self, num=1):
@@ -19,25 +18,31 @@ class Game:
 
 
 	def get_winner(self):
-		maxP = -1000
+		maxM = -1000
 		turns = 1000
 		winners = []
-		for p in managers:
-			if p.get_points() > maxP:
-				winners = [p]
-				maxP = p.get_points()
-				turns = p.turns
-			elif p.get_points == maxP:
-				if p.turns < turns:
-					winners = [p]
-				elif p.turns == turns:
-					winner.append(p)
+		for m in self.managers:
+			if m.get_points() > maxM:
+				winners = [m]
+				maxM = m.get_points()
+				turns = m.turns
+			elif m.get_points == maxM:
+				if m.turns < turns:
+					winners = [m]
+				elif m.turns == turns:
+					winner.append(m)
 		return winners
 
+def make_game():
+	store = Store(2)
+	p1 = DumbMoney(store,1)
+	p2 = DumbMoney(store,2)
+	return Game([p1,p2],store)
 
-g = Game([DumbMoney(),DumbMoney()])
-g.play_turn()
 
+g = make_game()
+g.play_turn(100)
+print(g.managers[0].player.set.all)
 
 
 

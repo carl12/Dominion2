@@ -3,11 +3,12 @@ from card import *
 # from manager import *
 class Player:
 
-	def __init__(self, manager):
+	def __init__(self, manager,store):
 		self.manager = []
 		self.set = Set()
 		self.set.end_turn()
 		self.manager = manager
+		self.store = store
 		self.actions = 0
 		self.buys = 0
 		self.money = 0
@@ -42,7 +43,7 @@ class Player:
 
 	def buy(self,card_type):
 		if self.buys > 0:
-			cost = globals()[card_type].cost
+			cost = card_dict[card_type].cost
 			if cost <= self.money:
 				card = self.store.take(card_type)
 				if card:

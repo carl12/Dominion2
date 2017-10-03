@@ -1,4 +1,4 @@
-# from set import Set
+
 
 class Card:
 	cost = 0
@@ -33,6 +33,8 @@ class VictoryCard(Card):
 
 class TreasureCard(Card):
 	is_treasure = True
+
+
 
 class Village(ActionCard):
 	cost = 3
@@ -91,6 +93,16 @@ class Estate(VictoryCard):
 	cost = 2
 	name="Estate"
 
+class Duchy(VictoryCard):
+	points = 5
+	cost = 3
+	name="Duchy"
+
+class Province(VictoryCard):
+	points = 6
+	cost = 8
+	name="Province"
+
 
 
 def attribute_test():
@@ -103,4 +115,12 @@ def attribute_test():
 	print(smithy.money)
 
 
-# attribute_test()
+# from set import Set
+super_classes = ('Card','ActionCard','VictoryCard')
+g = locals().copy()
+card_dict = {}
+for key, vals in g.items():
+	if type(vals) is type and key not in super_classes:
+		card_dict[key] = vals
+# print(available_cards)
+# print(card_dict)
