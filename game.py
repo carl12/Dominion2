@@ -89,18 +89,3 @@ def play_100():
 
 play_100()
 
-
-# g = make_game()
-# g.play_turn(100)
-# print(g.managers[0].player.set.all)
-# print(g.managers[0].get_points())
-# print(g.managers[1].player.set.all)
-# print(g.managers[1].get_points())
-# print(g.get_winner())
-
-
-
-'''
--check end game
--
-'''
