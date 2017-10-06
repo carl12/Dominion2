@@ -46,10 +46,8 @@ class Set:
 
 
 	def play_card(self, loc):
-		
 		card = self.hand.pop(loc)
-		if type(card) is card_dict['Smithy']:
-			self.draw(3)
+		card.play()
 		self.in_play.append(card)
 		return card
 		# card.play()

@@ -6,26 +6,43 @@ class Card:
 	action = 0
 	buy = 0
 	money = 0
+	point_chips = 0
 	points = 0
 	is_action = False
 	is_vp = False
 	is_treasure= False
 	name = "generic card"
 
-	def __init__(self):
-		self.game = []
-		self.owner=[]
-		self.opponents=[]
+	def __init__(self, owner=None, game=None, opponents=None):
+		self.game = game
+		self.owner=owner
+		self.opponents=opponents
 
 	def __repr__(self):
 		return self.name
 
 	def play(self):
-		print('asdf')
+		return
 		#add all respective stuff to owner
 
 
 class ActionCard(Card):
+	def __init__(self, owner, game=None, opponents=None):
+		self.game = game
+		self.owner=owner
+		self.opponents=opponents
+
+	def play(self):
+		self.owner.actions += self.action - 1
+		self.owner.buys += self.buy
+		self.owner.money += self.money
+		self.owner.point_chips += self.point_chips
+		self.owner.draw(self.draw)
+		
+		# self.owner.points += points
+
+
+
 	is_action = True
 
 class VictoryCard(Card):

@@ -55,7 +55,7 @@ class Game:
 		pass
 		
 
-def make_game():
+def make_game_rand_ord():
 	store = Store(2)
 	p1 = DumbMoneyV3(store)
 	p2 = DumbMoneyV2(store)
@@ -66,7 +66,7 @@ def make_game():
 	
 
 def play_game():
-	g,order = make_game()
+	g,order = make_game_rand_ord()
 	g.play_turn(100)
 	stats = g.get_stats()
 	winner = stats['winner']

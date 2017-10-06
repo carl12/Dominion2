@@ -21,8 +21,8 @@ class Store:
 			self.remain[str]-= 1
 			if self.remain[str] == 0:
 				self.empty_piles += 1
-			card = card_dict[str]()
-			return card
+			card_type = card_dict[str]
+			return card_type
 
 	def is_game_over(self):
 		return self.empty_piles >= 3 or self.remain['Province']== 0

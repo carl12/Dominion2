@@ -14,6 +14,7 @@ class Player:
 		self.buys = 0
 		self.money = 0
 		self.turns = 0
+		self.point_chips = 0
 
 	def do_turn(self):
 		self.start_turn()
@@ -50,8 +51,7 @@ class Player:
 				if card:
 					self.money -= cost
 					self.buys -= 1
-					self.set.gain(card)
-
+					self.set.gain(card(self))
 					return True
 
 
@@ -62,6 +62,9 @@ class Player:
 		self.actions = 0
 		self.buys = 0
 		self.money = 0
+
+	def draw(self, num):
+		self.set.draw(num)
 
 	def get_hand(self):
 		return self.set.hand
