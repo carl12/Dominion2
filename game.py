@@ -2,7 +2,7 @@ from store import Store
 from manager import *
 import random
 class Game:
-    
+     
     def __init__(self, managers, store):
         self.managers = managers
         self.store = store
