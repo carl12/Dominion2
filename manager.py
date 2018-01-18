@@ -41,19 +41,22 @@ class Human(Manager):
         self.player = Player(self, store)
 
     def do_actions(self):
-        self.print_hand()
-        a = input('Enter card to play:').title()
+
         # a = 'Copper'
-        notEnd = True
-        while self.player.actions > 0 and notEnd:
-            if a is not 'End':
-                if card_dict[a]:
+        actionPhase = True
+        while self.player.actions > 0 and actionPhase:
+            self.print_hand()
+            a = input('Enter card to play:').title()
+            if a != 'End':
+                if card_dict.get(a):
                     self.play(a)
+                    print('playing')
                 else:
                     print('try again')
             else:
-                notEnd = True
-            self.print_hand()
+                actionPhase = False
+
+        print('play ended')
 
     def buy_cards(self):
         pass
