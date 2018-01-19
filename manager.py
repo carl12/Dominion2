@@ -41,12 +41,10 @@ class Human(Manager):
         self.player = Player(self, store)
 
     def do_actions(self):
-
-        # a = 'Copper'
         actionPhase = True
         while self.player.actions > 0 and actionPhase:
             self.print_hand()
-            a = input('Enter card to play:').title()
+            a = input('Enter card to play ("end" to stop):').title()
             if a != 'End':
                 if card_dict.get(a):
                     self.play(a)
@@ -59,7 +57,18 @@ class Human(Manager):
         print('play ended')
 
     def buy_cards(self):
-        pass
+        buyPhase = True
+        while self.player.buys > 0 and buyPhase:
+            print(self.player.store_str())
+            print("Buys: {}, Money: {} ".format(self.player.buys,self.player.money))
+            a = input('Enter card to buy ("end" to stop):').title()
+            if a != 'End':
+                self.player.buy(a)
+            else:
+                buyPhase = False
+
+
+
 
     def print_hand(self):
         turn = self.player.turns

@@ -60,6 +60,7 @@ class Village(ActionCard):
     cost = 3
     draw = 1
     action = 2
+    name = "Village"
 
 class Smithy(ActionCard):
     cost = 4
@@ -71,6 +72,7 @@ class Festival(ActionCard):
     action = 2
     buy = 1
     money = 2
+    name = "Festival"
 
 class Laboratory(ActionCard):
     cost = 5

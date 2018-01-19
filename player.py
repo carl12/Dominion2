@@ -46,15 +46,15 @@ class Player:
 
     def buy(self,card_type):
         if self.buys > 0:
-            cost = card_dict[card_type].cost
-            if cost <= self.money:
+            cardRef = card_dict.get(card_type)
+            cost = cardRef.cost if cardRef else None
+            if cost and cost <= self.money:
                 card = self.store.take(card_type)
                 if card:
                     self.money -= cost
                     self.buys -= 1
                     self.set.gain(card(self))
                     return True
-
 
     def cleanup(self):
         self.set.end_turn()
@@ -79,3 +79,6 @@ class Player:
 
     def play(self, name):
         return self.set.play(name)
+
+    def store_str(self):
+        return self.store.store_str

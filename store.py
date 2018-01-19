@@ -31,6 +31,11 @@ class Store:
         return self.remain[name]
 
 
+    @property
+    def store_str(self):
+        return self.remain.__str__()
+
+
 
 def store_test():
     s = Store()
