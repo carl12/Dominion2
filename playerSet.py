@@ -83,7 +83,7 @@ class Set:
 
     def discard(self, loc):
         card = self.hand.pop(loc)
-        discard.append(card)
+        self.discard.append(card)
 
     def calc_points(self):
         sum2 = sum(card.points for card in self.all)

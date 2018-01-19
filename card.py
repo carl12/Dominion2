@@ -11,7 +11,6 @@ class Card:
     is_action = False
     is_vp = False
     is_treasure= False
-    name = "generic card"
 
     def __init__(self, owner, game=None, opponents=None):
         self.game = game
@@ -19,7 +18,11 @@ class Card:
         self.opponents=opponents
 
     def __repr__(self):
-        return self.name
+        return type(self).__name__
+
+    @property
+    def name(self):
+        return type(self).__name__
 
     def play(self):
         return
@@ -99,32 +102,26 @@ class Gardens(VictoryCard):
 
 class Copper(TreasureCard):
     money = 1
-    name="Copper"
 
 class Silver(TreasureCard):
     money = 2
     cost = 3
-    name="Silver"
 
 class Gold(TreasureCard):
     money = 3
     cost = 6
-    name="Gold"
 
 class Estate(VictoryCard):
     points = 1
     cost = 2
-    name="Estate"
 
 class Duchy(VictoryCard):
-    points = 5
-    cost = 3
-    name="Duchy"
+    points = 3
+    cost = 5
 
 class Province(VictoryCard):
     points = 6
     cost = 8
-    name="Province"
 
 
 
