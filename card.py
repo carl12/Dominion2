@@ -124,6 +124,7 @@ class Feast(PromptActionCard):
             print(added_card)
             if added_card:
                 self.owner.set.gain(added_card(self.owner))
+                print('feast trashes first card in play')
                 self.owner.set.trash('in_play', 0)
                 return True
         raise Exception('Feast did not work')
