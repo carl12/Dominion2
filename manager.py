@@ -32,6 +32,10 @@ class Manager:
     def get_left(self, name):
         return self.player.get_left(name)
 
+    def card_prompt(self, card, requested_args):
+        print('Base manager prompted')
+        pass
+
 
 class Human(Manager):
 
@@ -42,19 +46,20 @@ class Human(Manager):
 
     def do_actions(self):
         actionPhase = True
+        print('------------------------------')
         while self.player.actions > 0 and actionPhase:
             self.print_hand()
             a = input('Enter card to play ("end" to stop):').title()
             if a != 'End':
                 if card_dict.get(a):
+                    print('playing ', a)
                     self.play(a)
-                    print('playing')
+
                 else:
                     print('try again')
             else:
                 actionPhase = False
 
-        print('play ended')
 
     def buy_cards(self):
         buyPhase = True
@@ -67,6 +72,12 @@ class Human(Manager):
             else:
                 buyPhase = False
 
+    def card_prompt(self, card, requested_args):
+        print(card.name)
+        a = input('enter input: ').title()
+        #store, card
+        if card.use_effect(store = self.store, card_choice = a):
+            pass
 
 
 
@@ -78,6 +89,8 @@ class Human(Manager):
         print("Turn: {} || Actions: {}, Buys: {}, Money: {}"
             .format(turn,act,buy,money))
         print(self.get_hand())
+
+
 
 
     

@@ -21,7 +21,8 @@ class Player:
         self.do_actions()
         self.play_treasures()
         self.buy_cards()
-        self.cleanup()    
+        self.cleanup()
+        print('Turn ended for ', self.manager.name)
 
     def start_turn(self):
         self.actions = 1
@@ -30,9 +31,8 @@ class Player:
         self.turns +=1
 
     def do_actions(self):
-        print('asdf')
         self.manager.do_actions()
-        print('asdf')
+
 
     def play_treasures(self):
         for card in reversed(self.set.hand):
@@ -55,6 +55,8 @@ class Player:
                     self.buys -= 1
                     self.set.gain(card(self))
                     return True
+
+
 
     def cleanup(self):
         self.set.end_turn()
@@ -82,3 +84,6 @@ class Player:
 
     def store_str(self):
         return self.store.store_str
+
+    def card_prompt(self, card, requested_args):
+        self.manager.card_prompt(card, requested_args)

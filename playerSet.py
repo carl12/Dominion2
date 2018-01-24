@@ -46,8 +46,9 @@ class Set:
 
     def play_card(self, loc):
         card = self.hand.pop(loc)
-        card.play()
         self.in_play.append(card)
+        card.play()
+
         return card
         # card.play()
 

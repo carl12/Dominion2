@@ -30,6 +30,7 @@ class Card:
 
 
 class ActionCard(Card):
+    is_action = True
     def __init__(self, owner, game=None, opponents=None):
         self.game = game
         self.owner=owner
@@ -44,9 +45,18 @@ class ActionCard(Card):
         
         # self.owner.points += points
 
+class PromptActionCard(ActionCard):
+    use_args = None
+    def play(self):
+        super(PromptActionCard, self).play()
+        self.prompt_player()
 
+    def prompt_player(self):
+        self.owner.card_prompt(self, self.use_args)
 
-    is_action = True
+    def use_effect(self):
+        print('promptactioncard card_effect called :( ')
+        pass
 
 class VictoryCard(Card):
     is_vp = True
@@ -91,13 +101,41 @@ class Market(ActionCard):
 
 class Woodcutter(ActionCard):
     cost = 3
-    actino = 1
     money = 2
+    buy = 1
+
+class Feast(PromptActionCard):
+    cost = 4
+    use_args = ['store','card_choice']
+
+    def use_effect(self, **kwargs):
+        print('Feast processing card_effect response')
+        store = 'store'
+        card_choice = 'card_choice'
+
+        added_card = None
+        if store in kwargs and card_choice in kwargs:
+            card_str = kwargs[card_choice]
+            game_store = kwargs[store]
+
+            card_ref = card_dict[card_str]
+            if card_ref and card_ref.cost <= 5:
+                added_card = game_store.take(card_str)
+            print(added_card)
+            if added_card:
+                self.owner.set.gain(added_card(self.owner))
+                self.owner.set.trash('in_play', 0)
+                return True
+        raise Exception('Feast did not work')
+
+
+
+
 
 class Gardens(VictoryCard):
     cost = 4
     @property
-    def cost(self):
+    def points(self):
         print('calculate garden value')
 
 class Copper(TreasureCard):
