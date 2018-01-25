@@ -73,10 +73,10 @@ class Human(Manager):
                 buyPhase = False
 
     def card_prompt(self, card, requested_args):
-        print(card.name)
-        a = input('enter input: ').title()
+        a = input('enter input for {}: '.format(card.name)).title()
         #store, card
-        if card.use_effect(store = self.store, card_choice = a):
+        kwargs = {'card_choice':a}
+        if card.use_effect(**kwargs):
             pass
 
 
@@ -89,11 +89,6 @@ class Human(Manager):
         print("Turn: {} || Actions: {}, Buys: {}, Money: {}"
             .format(turn,act,buy,money))
         print(self.get_hand())
-
-
-
-
-    
 
 
 class DumbMoney(Manager):
@@ -146,7 +141,7 @@ class DumbMoneyV2(Manager):
 class DumbMoneyV3(Manager):
     def __init__(self,store):
         super().__init__(store)
-        self.name = "DumbManagerV2"
+        self.name = "DumbManagerV3"
         self.player = Player(self,self.store)
         self.smithy= 0
 

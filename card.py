@@ -106,17 +106,16 @@ class Woodcutter(ActionCard):
 
 class Feast(PromptActionCard):
     cost = 4
-    use_args = ['store','card_choice']
+    use_args = ['card_choice']
 
     def use_effect(self, **kwargs):
         print('Feast processing card_effect response')
-        store = 'store'
-        card_choice = 'card_choice'
 
+        card_choice = 'card_choice'
         added_card = None
-        if store in kwargs and card_choice in kwargs:
+        if card_choice in kwargs:
             card_str = kwargs[card_choice]
-            game_store = kwargs[store]
+            game_store = self.owner.store
 
             card_ref = card_dict[card_str]
             if card_ref and card_ref.cost <= 5:
@@ -131,16 +130,16 @@ class Feast(PromptActionCard):
 
 class Workshop(PromptActionCard):
     cost = 3
-    use_args = ['store','card_choice']
+    use_args = ['card_choice']
 
     def use_effect(self, **kwargs):
         print('Workshop processing card_effect response')
-        store = 'store'
+
         card_choice = 'card_choice'
         added_card = None
-        if store in kwargs and card_choice in kwargs:
+        if card_choice in kwargs:
             card_str = kwargs[card_choice]
-            game_store = kwargs[store]
+            game_store = self.owner.store
 
             card_ref = card_dict[card_str]
             if card_ref and card_ref.cost <= 4:
