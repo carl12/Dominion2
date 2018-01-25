@@ -129,7 +129,27 @@ class Feast(PromptActionCard):
                 return True
         raise Exception('Feast did not work')
 
+class Workshop(PromptActionCard):
+    cost = 3
+    use_args = ['store','card_choice']
 
+    def use_effect(self, **kwargs):
+        print('Workshop processing card_effect response')
+        store = 'store'
+        card_choice = 'card_choice'
+        added_card = None
+        if store in kwargs and card_choice in kwargs:
+            card_str = kwargs[card_choice]
+            game_store = kwargs[store]
+
+            card_ref = card_dict[card_str]
+            if card_ref and card_ref.cost <= 4:
+                added_card = game_store.take(card_str)
+            print(added_card)
+            if added_card:
+                self.owner.set.gain(added_card(self.owner))
+                return True
+        raise Exception('Workshop did not work')
 
 
 
