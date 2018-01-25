@@ -128,10 +128,10 @@ class Feast(PromptActionCard):
                 return True
         raise Exception('Feast did not work')
 
+
 class Workshop(PromptActionCard):
     cost = 3
     use_args = ['card_choice']
-
     def use_effect(self, **kwargs):
         print('Workshop processing card_effect response')
 
@@ -149,7 +149,6 @@ class Workshop(PromptActionCard):
                 self.owner.set.gain(added_card(self.owner))
                 return True
         raise Exception('Workshop did not work')
-
 
 
 class Gardens(VictoryCard):

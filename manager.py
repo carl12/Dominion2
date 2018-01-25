@@ -93,7 +93,7 @@ class Human(Manager):
 
 class DumbMoney(Manager):
     num = 1
-    def __init__(self,store, num=num):
+    def __init__(self,store, name = 'DumbManager'):
         super().__init__(store)
         self.name = "DumbManager"+str(num)
         num +=1
@@ -112,9 +112,9 @@ class DumbMoney(Manager):
 class DumbMoneyV2(Manager):
 
 
-    def __init__(self,store):
+    def __init__(self,store, name='DumbManagerV2'):
         super().__init__(store)
-        self.name = "DumbManagerV2"
+        self.name = name
         self.player = Player(self,self.store)
         self.smithy= 0
 
@@ -139,9 +139,9 @@ class DumbMoneyV2(Manager):
 
 
 class DumbMoneyV3(Manager):
-    def __init__(self,store):
+    def __init__(self,store,name='DumbManagerV3'):
         super().__init__(store)
-        self.name = "DumbManagerV3"
+        self.name = name
         self.player = Player(self,self.store)
         self.smithy= 0
 

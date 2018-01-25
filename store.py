@@ -1,6 +1,7 @@
 from card import *
-class Store:
 
+
+class Store:
     def __init__(self, num_players=2):
         if num_players > 2:
             VPnum = 12
@@ -14,14 +15,15 @@ class Store:
         self.remain.update({card:VPnum for card in self.baseVPs})
         self.remain.update({card:100 for card in self.baseTreasure})
         self.empty_piles = 0
+        print('asdf')
 
-    def take(self, str):
-        cards_left = self.remain.get(str)
+    def take(self, card_str):
+        cards_left = self.remain.get(card_str)
         if cards_left and cards_left > 0:
-            self.remain[str]-= 1
-            if self.remain[str] == 0:
+            self.remain[card_str]-= 1
+            if self.remain[card_str] == 0:
                 self.empty_piles += 1
-            card_type = card_dict[str]
+            card_type = card_dict[card_str]
             return card_type
 
     def is_game_over(self):

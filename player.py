@@ -22,7 +22,7 @@ class Player:
         self.play_treasures()
         self.buy_cards()
         self.cleanup()
-        print('Turn ended for ', self.manager.name)
+
 
     def start_turn(self):
         self.actions = 1
@@ -54,6 +54,7 @@ class Player:
                     self.money -= cost
                     self.buys -= 1
                     self.set.gain(card(self))
+                    print(self.manager.name , " bought ", card_type)
                     return True
 
 
