@@ -77,9 +77,19 @@ class Set:
     def trash(self, place, position):
         var = self.__dict__.get(place)
         if var and type(var) is list and var is not self.trash_list:
-            card = var.pop(position)
-            self.all.remove(card)
-            self.trash_list.append(card)
+            if position >= 0 and position < len(var):
+                card = var.pop(position)
+                self.all.remove(card)
+                self.trash_list.append(card)
+                print('Trashed ', card)
+                return card
+
+    def hand_trash(self, locations):
+        for i in sorted(locations, reverse=True):
+            if not self.trash("hand",i):
+                return None
+        return True
+
 
 
     def discard(self, loc):

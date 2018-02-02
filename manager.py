@@ -74,7 +74,16 @@ class Human(Manager):
 
     def card_prompt(self, card, requested_args):
         a = input('enter input for {}: '.format(card.name)).title()
+        if type(card) is card_dict['Chapel']:
+            print('asdf')
+            trash_list = []
+            for token in a.split(" "):
+                trash_list.append(int(token))
+            kwargs = {'hand_locs': trash_list}
+            card.use_effect(**kwargs)
+            return
         #store, card
+        #hand_locs
         kwargs = {'card_choice':a}
         if card.use_effect(**kwargs):
             pass

@@ -8,7 +8,7 @@ class Store:
         else:
             VPnum = 8
         self.kingdom_cards = {'Smithy','Village','Festival',
-        'Laboratory','Market','Woodcutter','Feast'}
+        'Laboratory','Market','Woodcutter','Feast','Chapel'}
         self.baseVPs = {'Curse','Estate','Duchy','Province'}
         self.baseTreasure = {'Copper','Silver','Gold'}
         self.remain = {card:10 for card in self.kingdom_cards}

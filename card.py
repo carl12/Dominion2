@@ -58,6 +58,12 @@ class PromptActionCard(ActionCard):
         print('promptactioncard card_effect called :( ')
         pass
 
+    def check_args(self, **kwargs):
+        for req in self.use_args:
+            if req not in kwargs:
+                return False
+        return True
+
 class VictoryCard(Card):
     is_vp = True
 
@@ -149,6 +155,18 @@ class Workshop(PromptActionCard):
                 self.owner.set.gain(added_card(self.owner))
                 return True
         raise Exception('Workshop did not work')
+
+class Chapel(PromptActionCard):
+    cost = 2
+    use_args = ['hand_locs']
+    def use_effect(self, **kwargs):
+        print('Chapel processing hand_locs response')
+        if self.check_args(**kwargs):
+            hand_locs = kwargs[self.use_args[0]]
+            if self.owner.set.hand_trash(hand_locs):
+                return True
+
+        raise Exception('Chapel did not work')
 
 
 class Gardens(VictoryCard):
